@@ -1,0 +1,30 @@
+
+<form action="/address/search/results" method="get">
+  <label for="last_name">Search for address by last name</label>
+  <div>
+    <input name="last_name" value="<%= params[:last_name] %>"/>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
+<% if params[:last_name] %>
+  <% if @results.empty? %>
+    <p>Sorry, no matches were found.</p>
+  <% else %>
+  <h2>Results found for '<%= params[:last_name] %>'</h2>
+  <% sort(@results).each do |entry| %>
+  <ul>
+    <li>Name: <%= "#{entry[:first_name]} #{entry[:last_name]}" %></li>
+    <li>Address: <%= entry[:address] %></li>
+    <li>Phone Number: <%= format_phone_number(entry[:phone_number]) %></li>
+    <li>
+    <form action="/<%= entry[:id] %>/delete" method="POST">
+      <button type="submit" class="inline delete">Delete Entry</button>
+    </form>
+    <li><a href="/<%= entry[:id].to_s %>/edit">Edit Entry</a></li>
+    </li>
+  </ul>
+  <% end %>
+  <% end %>
+<% end %>
+<p><a href="/">All Addresses</a></p>

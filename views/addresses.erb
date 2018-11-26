@@ -1,0 +1,16 @@
+<p><a href="/address/search" >Address Search</a></p>
+<% sort(@entries).each do |entry| %>
+<ul>
+  <li>Name: <%= "#{entry[:first_name]} #{entry[:last_name]}" %></li>
+  <li>Address: <%= entry[:address] %></li>
+  <li>Phone Number: <%= format_phone_number(entry[:phone_number]) %></li>
+  <li>
+  <form action="/<%= entry[:id] %>/delete" method="POST">
+    <button type="submit" class="inline delete">Delete Entry</button>
+  </form>
+  <li><a href="/<%= entry[:id].to_s %>/edit">Edit Entry</a></li>
+  </li>
+</ul>
+<% end %>
+
+<p><a href="/address/create">Add a new entry</a></p>

@@ -1,0 +1,25 @@
+<h3>Complete form to add an entry</h3>
+<form action="/address/create" method="POST">
+  <p>
+    <label>First name:
+      <input name="First Name" type="text" value="<%= params["First Name"] %>" />
+    </label>
+  </p>
+  <p>
+    <label>Last name:
+      <input name="Last Name" type="text" value="<%= params["Last Name"] %>"/>
+    </label>
+  </p>
+  <p>
+    <label>Address:
+      <input name="Address" type="text" value="<%= params["Address"] %>"/>
+    </label>
+  </p>
+  <p>
+    <label>Phone Number:
+      <input name="Phone Number" type="text" value="<%= params["Phone Number"] %>"/>
+    </label>
+  </p>
+  <button type="submit">Submit</button>
+</form>
+<p><a href="/">Back</a></p>
